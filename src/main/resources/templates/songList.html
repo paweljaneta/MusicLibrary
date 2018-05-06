@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Songs and Artists</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>Song</th>
+        <th>Artist(s)</th>
+    </tr>
+    <tr th:each="song:${songs}">
+        <td>
+            <div th:text="${song.getTitle()}"> </div>
+            <div th:text="${song.getGenre()}"> </div>
+            <div th:text="${song.getYear()}"> </div>
+            <div th:text="${song.getRecordLabel()}"> </div>
+        </td>
+        <td>
+
+            <table>
+                <tr th:each="artist:${song.getArtists()}">
+                    <td>
+                        <div th:text="${artist.getFirstName()}"> </div>
+                        <div th:text="${artist.getLastName()}"> </div>
+                        <div  th:text="${artist.getNick()}"> </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
